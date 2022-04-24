@@ -73,7 +73,7 @@ void shape_gradn(const complex<double> *PS_TOTN, PW_Basis &pw, double *eprime)
     delete[] PS_TOTN_real;
 }
 
-void createcavity(const UnitCell &ucell, PW_Basis &pwb, const complex<double> *PS_TOTN, double *vwork)
+void surchem::createcavity(const UnitCell &ucell, PW_Basis &pwb, const complex<double> *PS_TOTN, double *vwork)
 {
     ModuleBase::Vector3<double> *nablan = new ModuleBase::Vector3<double>[pwb.nrxx];
     ModuleBase::GlobalFunc::ZEROS(nablan, pwb.nrxx);
@@ -122,7 +122,7 @@ void createcavity(const UnitCell &ucell, PW_Basis &pwb, const complex<double> *P
     // quantum surface area, integral of (gamma*A / n) * |\nabla n|
     //=term1 * sqrt_nablan_2
     //-------------------------------------------------------------
-    double qs = 0;
+    qs = 0;
 
     for (int ir = 0; ir < pwb.nrxx; ir++)
     {
@@ -136,7 +136,7 @@ void createcavity(const UnitCell &ucell, PW_Basis &pwb, const complex<double> *P
     // cavitation energy
     //-------------------------------------------------------------
 
-    double Ael = surchem::cal_Acav(ucell, pwb, qs);
+    // double Ael = surchem::cal_Acav(ucell, pwb, qs);
 
     //  packs the real array into a complex one
     //  to G space

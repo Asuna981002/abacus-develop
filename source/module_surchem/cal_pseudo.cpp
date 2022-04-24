@@ -1,7 +1,5 @@
 #include "surchem.h"
 
-atom_in surchem::GetAtom;
-
 void surchem::gauss_charge(const UnitCell &cell, PW_Basis &pwb, complex<double> *N)
 {
     pwb.setup_structure_factor(); // call strucFac(ntype,ngmc)

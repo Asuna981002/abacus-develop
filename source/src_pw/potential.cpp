@@ -358,7 +358,14 @@ ModuleBase::matrix Potential::v_of_rho(const double *const *const rho_in, const 
         v += H_Hartree_pw::v_hartree(GlobalC::ucell, GlobalC::pw, GlobalV::NSPIN, rho_in);
         if (GlobalV::imp_sol)
         {
-            v += surchem::v_correction(GlobalC::ucell, GlobalC::pw, GlobalV::NSPIN, rho_in);
+            surchem tmp;
+            v += tmp.v_correction(GlobalC::ucell, GlobalC::pw, GlobalV::NSPIN, rho_in);
+
+            double output_ael = tmp.cal_Ael(GlobalC::ucell, GlobalC::pw);
+            double output_acav = tmp.cal_Acav(GlobalC::ucell, GlobalC::pw);
+
+            cout << "Ael(outside): " << output_ael << endl;
+            cout << "Acav(outside): " << output_acav << endl;
         }
     }
 
